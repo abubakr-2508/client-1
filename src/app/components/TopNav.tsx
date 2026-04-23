@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Search, ChevronDown, LogOut, Settings, UserRound } from "lucide-react";
+import { BrandLogo } from "./BrandLogo";
 
 type Tab = "assistant" | "kb" | "admin";
 
@@ -36,8 +37,7 @@ export function TopNav({
     <header className="h-14 border-b border-[#E2E8F0] bg-white flex items-center justify-between px-5 shrink-0">
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded bg-[#2563EB]" />
-          <span className="text-[#0F172A]">rag.cx</span>
+          <BrandLogo size="sm" />
         </div>
         <span className="h-5 w-px bg-[#E2E8F0]" />
         <button className="inline-flex items-center gap-1.5 text-[#475569] hover:text-[#0F172A] rounded-md px-2 py-1 hover:bg-[#F8FAFC] transition-colors">

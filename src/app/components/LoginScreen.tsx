@@ -1,5 +1,16 @@
 import { useMemo, useState } from "react";
-import { Eye, EyeOff, ShieldCheck, Lock, ArrowRight, Sparkles } from "lucide-react";
+import {
+  Eye,
+  EyeOff,
+  ShieldCheck,
+  Lock,
+  ArrowRight,
+  CheckCircle2,
+} from "lucide-react";
+import { BrandLogo } from "./BrandLogo";
+
+const editorialSerif =
+  '"Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif';
 
 export function LoginScreen({ onLogin }: { onLogin: () => void }) {
   const [email, setEmail] = useState("operator@rag.cx");
@@ -24,59 +35,75 @@ export function LoginScreen({ onLogin }: { onLogin: () => void }) {
   }
 
   return (
-    <div className="min-h-screen w-full bg-[#F8FAFC] text-[#0F172A] flex">
-      {/* Left brand panel */}
-      <aside className="hidden lg:flex w-[46%] border-r border-[#DBE4F1] bg-[#EDF2FA] relative flex-col justify-between p-12 text-[#0F172A]">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded bg-[#2563EB]" />
-          <span className="text-[#0F172A]">rag.cx</span>
-        </div>
+    <div className="h-screen w-full overflow-hidden bg-[#F8FAFC] text-[#0F172A] flex">
+      <aside className="hidden lg:flex w-[45%] border-r border-[#D9E2EC] bg-[#EEF3F9] relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-45"
+          style={{
+            backgroundImage:
+              "linear-gradient(#DCE6F0 1px, transparent 1px), linear-gradient(90deg, #DCE6F0 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
+        />
+        <div className="absolute inset-y-0 right-0 w-px bg-[#D9E2EC]" />
+        <div className="absolute right-12 top-16 h-[320px] w-[320px] rounded-full border border-[#DCE5EF] bg-white/15" />
 
-        <div className="max-w-[480px]">
-          <div className="inline-flex items-center gap-1.5 text-[#475569] border border-[#DBE4F1] bg-white/70 rounded-full px-2.5 py-1 mb-6">
-            <Sparkles size={12} className="text-[#2563EB]" />
-            AI-powered process assistant
+        <div className="relative z-10 flex h-full w-full flex-col justify-between p-8 xl:p-10">
+          <BrandLogo />
+
+          <div className="flex-1 flex flex-col justify-center pl-8 xl:pl-12">
+            <div className="max-w-[620px]">
+              <h1
+                className="text-[#0F172A] tracking-[-0.05em] leading-[0.94] max-w-[560px]"
+                style={{
+                  fontFamily: editorialSerif,
+                  fontSize: 86,
+                  fontWeight: 700,
+                }}
+              >
+                RAG.CX
+              </h1>
+
+              <div
+                className="text-[#0F172A] mt-3 max-w-[520px]"
+                style={{ fontSize: 26, lineHeight: 1.2 }}
+              >
+                RAG for Customer Experience
+              </div>
+
+              <p
+                className="text-[#475569] mt-4 max-w-[470px]"
+                style={{ fontSize: 18, lineHeight: 1.6 }}
+              >
+                Reliable answers for process-driven teams.
+              </p>
+            </div>
+
+            <div className="mt-9 max-w-[540px] space-y-5">
+              <ValueRow title="Documents unified" />
+              <ValueRow title="Knowledge kept current" />
+              <ValueRow title="Operations made clearer" />
+            </div>
           </div>
 
-          <h1
-            className="text-[#0F172A] leading-none mb-3 tracking-tight"
-            style={{ fontSize: 88, fontWeight: 700 }}
-          >
-            RAG.CX
-          </h1>
-          <p className="text-[#334155] mb-8" style={{ fontSize: 20 }}>
-            RAG for Customer Experience
-          </p>
-
-          <p className="text-[#64748B] mb-8 max-w-[440px]">
-            rag.cx connects your documents, knowledge base, and NetSuite data into a
-            single assistant your team can trust.
-          </p>
-
-          <ul className="space-y-3">
-            <Bullet>Answers cited to the exact page of every document</Bullet>
-            <Bullet>Live NetSuite status, approvals, and vendor lookups</Bullet>
-            <Bullet>Editable knowledge base that updates answers instantly</Bullet>
-          </ul>
-        </div>
-
-        <div className="flex items-center gap-4 text-[#94A3B8]">
-          <span className="inline-flex items-center gap-1.5">
-            <ShieldCheck size={13} /> SOC 2 Type II
-          </span>
-          <span className="h-3 w-px bg-[#DBE4F1]" />
-          <span>GDPR ready</span>
-          <span className="h-3 w-px bg-[#DBE4F1]" />
-          <span>SSO · SAML</span>
+          <div className="max-w-[760px] pt-5 border-t border-[#D5DFEA]">
+            <div className="flex items-center gap-4 text-[#94A3B8]">
+              <span className="inline-flex items-center gap-1.5">
+                <ShieldCheck size={13} /> SOC 2 Type II
+              </span>
+              <span className="h-3 w-px bg-[#D5DFEA]" />
+              <span>GDPR ready</span>
+              <span className="h-3 w-px bg-[#D5DFEA]" />
+              <span>SSO and SAML</span>
+            </div>
+          </div>
         </div>
       </aside>
 
-      {/* Right form panel */}
-      <main className="flex-1 flex flex-col items-center justify-center p-6 lg:p-12">
+      <main className="flex-1 flex flex-col items-center justify-center p-6 lg:p-10 bg-white overflow-hidden">
         <div className="w-full max-w-[400px]">
-          <div className="lg:hidden flex items-center gap-2 mb-8">
-            <div className="w-7 h-7 rounded bg-[#2563EB]" />
-            <span className="text-[#0F172A]">rag.cx</span>
+          <div className="lg:hidden mb-8">
+            <BrandLogo />
           </div>
 
           <h2 className="text-[#0F172A] mb-1" style={{ fontSize: 22 }}>
@@ -127,7 +154,7 @@ export function LoginScreen({ onLogin }: { onLogin: () => void }) {
           <div className="relative my-5">
             <div className="h-px bg-[#E2E8F0]" />
             <span className="absolute inset-0 flex items-center justify-center">
-              <span className="bg-[#F8FAFC] px-3 text-[#94A3B8]">
+              <span className="bg-white px-3 text-[#94A3B8]">
                 or continue with email
               </span>
             </span>
@@ -165,7 +192,7 @@ export function LoginScreen({ onLogin }: { onLogin: () => void }) {
                   type={showPw ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
+                  placeholder="........"
                   className="w-full bg-white border border-[#E2E8F0] rounded-md pl-3 pr-10 py-2 focus:outline-none focus:ring-2 focus:ring-[#2563EB]/25 focus:border-[#2563EB] transition-colors"
                 />
                 <button
@@ -203,7 +230,7 @@ export function LoginScreen({ onLogin }: { onLogin: () => void }) {
               {loading ? (
                 <>
                   <span className="w-3.5 h-3.5 border-2 border-white/40 border-t-white rounded-full animate-spin" />
-                  Signing in…
+                  Signing in...
                 </>
               ) : (
                 <>
@@ -220,7 +247,7 @@ export function LoginScreen({ onLogin }: { onLogin: () => void }) {
           </div>
         </div>
 
-        <footer className="mt-12 text-[#94A3B8] flex items-center gap-4">
+        <footer className="mt-10 text-[#94A3B8] flex items-center gap-4">
           <a href="#" onClick={(e) => e.preventDefault()} className="hover:text-[#475569]">
             Terms
           </a>
@@ -229,7 +256,7 @@ export function LoginScreen({ onLogin }: { onLogin: () => void }) {
             Privacy
           </a>
           <span className="h-3 w-px bg-[#E2E8F0]" />
-          <span>© 2026 rag.cx</span>
+          <span>(c) 2026 rag.cx</span>
         </footer>
       </main>
     </div>
@@ -271,11 +298,15 @@ function SSOButton({ label, icon }: { label: string; icon: React.ReactNode }) {
   );
 }
 
-function Bullet({ children }: { children: React.ReactNode }) {
+function ValueRow({ title }: { title: string }) {
   return (
-    <li className="flex items-start gap-2.5 text-[#0F172A]">
-      <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-[#2563EB] shrink-0" />
-      <span>{children}</span>
-    </li>
+    <div className="flex items-center gap-3">
+      <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#D8E2EE] bg-white/75">
+        <CheckCircle2 size={13} className="text-[#2563EB]" />
+      </span>
+      <div className="text-[#0F172A]" style={{ fontSize: 18, lineHeight: 1.45 }}>
+        {title}
+      </div>
+    </div>
   );
 }
